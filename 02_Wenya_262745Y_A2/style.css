@@ -1,0 +1,50 @@
+.page{
+{width:80vw;height:80vh;border:1px black}
+nav ul li{display:inline;}
+margin: 10px 20px 15px 5px;}
+
+
+
+#page1{background:#211761}
+#page2{background:#314561}
+#page3{background:#245861}
+
+
+#hamIcon{display:none;}
+
+.quiz{display:none;}
+
+@media (max-width:800px){
+
+#qrCodeImg{display:none;}
+h1{background: lightgreen;}
+h1::after{content:"(mobile)";}
+
+nav ul li{display:block;}
+
+#hamIcon{display:block;}
+
+nav ul{display:none;}
+}
+
+#turtleId {position: relative;width:10vw}
+
+#turtleId {position: relative;width:10vw;
+transition: all 0.5s;
+}
+#turtleId.shrink{width:5vw;opacity: 0;}
+
+@keyframes turtleFrames{
+0%{rotate:0}
+25%{rotate:90deg}
+50%{rotate:180deg}
+100%{rotate:270deg}
+}
+#turtleId.anim1{animation: turtleFrames 1s;}
+
+.menuShow{display:block;}
+body{
+  background-image: url("images/turtlecage.jpg");
+  background-size: cover;
+  color:white;
+}
