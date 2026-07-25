@@ -1,48 +1,91 @@
-.page{
-{width:80vw;height:80vh;border:1px black}
-nav ul li{display:inline;}
-margin: 10px 20px 15px 5px;}
+.page
+{
+	{width:80vw;height:80vh;border:1px black}
+	nav ul li{display:inline;}
+	margin: 10px 20px 15px 10px;
+}
 
 
-
+/*the color of the backgrounds*/
 #page1{background:#211761}
 #page2{background:#314561}
 #page3{background:#245861}
+
+/*cutomiseing buttons*/
+#page1btn{list-style-type:none;}
 
 
 #hamIcon{display:none;}
 
 .quiz{display:none;}
 
-@media (max-width:800px){
-
-#qrCodeImg{display:none;}
-h1{background: lightgreen;}
-h1::after{content:"(mobile)";}
-
-nav ul li{display:block;}
-
-#hamIcon{display:block;}
-
-nav ul{display:none;}
+#box
+{
+	width: 90vw;
+	max-width: 1227px;
+	height:60vh; 
+	max-height: 609px;
+	border: none;
+	position: relative;
+	overflow: hidden; /*hides the parts sticking out of the box*/
 }
 
-#turtleId {position: relative;width:10vw}
 
-#turtleId {position: relative;width:10vw;
-transition: all 0.5s;
+
+#turtleId {position: relative;width:10vw}
+#turtleId{display:none;}
+#replayBtn{display:none;}
+
+#turtleId 
+{
+	position: absolute; /*position of the turtle is relative to box*/
+	width:10vw;
+	transition: all 0.5s;
 }
 #turtleId.shrink{width:5vw;opacity: 0;}
 
-@keyframes turtleFrames{
-0%{rotate:0}
-25%{rotate:90deg}
-50%{rotate:180deg}
-100%{rotate:270deg}
+@keyframes turtleFrames
+{
+	0%{rotate:0}
+	25%{rotate:90deg}
+	50%{rotate:180deg}
+	100%{rotate:270deg}
 }
 #turtleId.anim1{animation: turtleFrames 1s;}
 
 .menuShow{display:block;}
+
+@media (max-width:800px) /*Mobile mode*/
+{
+
+	#footer{display:none;}
+	h1{background: lightgreen;}
+	h1::after{content:"(mobile)";}
+
+	nav ul li{display:block;}
+
+	#hamIcon{display:block;}
+
+	nav ul{display:none;}
+	
+	#box 
+	{
+		width:92vw; /*so that its easier to use on mobile*/
+		height: 50vh;
+	}
+	
+	#turtleId
+	{
+		width: 20vw; /*so that turtle is bigger and easier to press*/
+	}
+	
+	#startBtn, #replayBtn
+	{
+		padding: 10px 20px;
+	}
+}
+
+
 body{
   background-image: url("images/turtlecage.jpg");
   background-size: cover;

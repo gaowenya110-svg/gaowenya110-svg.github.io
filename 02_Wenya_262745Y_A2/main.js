@@ -1,4 +1,4 @@
-
+//getting page buttons
 const page1btn=document.querySelector("#page1btn");
 const page2btn=document.querySelector("#page2btn");
 const page3btn=document.querySelector("#page3btn");
@@ -8,32 +8,43 @@ const page2=document.querySelector("#page2");
 const page3=document.querySelector("#page3");
 const page4=document.querySelector("#page4");
 
-function hideall(){ 
+//hiding the pages
+function hideall()
+{ 
 page1.style.display="none";
 page2.style.display="none";
 page3.style.display="none";
 page4.style.display="none";
 }
 
-page1btn.addEventListener("click", function () {
+//showing the pages when button pressed
+page1btn.addEventListener("click", function () 
+{
 hideall(); 
 page1.style.display="block";
 });
-page2btn.addEventListener("click", function () {
+
+page2btn.addEventListener("click", function () 
+{
 hideall(); 
 page2.style.display="block";
 });
-page3btn.addEventListener("click", function () {
+
+page3btn.addEventListener("click", function () 
+{
 hideall(); 
 page3.style.display="block";
 });
-page4btn.addEventListener("click", function () {
+
+page4btn.addEventListener("click", function () 
+{
 hideall(); 
 page4.style.display="block";
 });
+
 hideall(); 
 
-
+//show menu for mobile
 const hamBtn=document.querySelector("#hamIcon");
 
 hamBtn.addEventListener("click",toggleMenus);
@@ -92,36 +103,87 @@ scorebox.innerHTML="Score:"+score;
 //game
 
 const turtleId = document.getElementById("turtleId");
-function GetRandom(min,max){
-//this will select a number between min and max
-return Math.round(Math.random() * (max - min)) + min;
-}
-function Moveturtle() {
-	console.log ("hello");
-turtleId.style.left = GetRandom(0, 500) + "px";
-turtleId.style.top = GetRandom(0, 500) + "px";
-}
-var MoveturtleItvId = setInterval(Moveturtle, 1000);
-
-
+const box = document.getElementById("box");
 const scoreBox=document.getElementById("scoreBox");
+const startBtn=document.getElementById("startBtn");
+const replayBtn=document.getElementById("replayBtn");
 
 const popAudio = new Audio("bubblesound.mp3");
 
+//the frequency the turtle moves in ms
+var timeleft = 15;
 var score=0; //to track how many clicks
-function turtleCatch() {
-//increases score after clicking
-score++;
-//update html scorebox
-scoreBox.innerHTML = "Score: " + score;
-popAudio.play(); //play the audio
+let gameTimer;
+let MoveturtleItvId;
+
+
+function GetRandom(min,max)
+{
+//this will select a number between min and max
+return Math.round(Math.random() * (max - min)) + min;
+}
+
+function Moveturtle()
+ {	
+	const maxY = box.offsetHeight - turtleId.offsetHeight;
+	const maxX = box.offsetWidth - turtleId.offsetWidth;
+	turtleId.style.left = GetRandom(0, maxX) + "px";
+	turtleId.style.top = GetRandom(0, maxY) + "px";
+}
+
+
+function turtleCatch() 
+{
+	//increases score after clicking
+	score++;
+	//update html scorebox
+	scoreBox.innerHTML = "Score: " + score, " Time:" + timeleft;
+	popAudio.play(); //play the audio
 
 }
-//link durian to mouseclick to turtleCatch function
+
+function startGame()
+{
+	score = 0;
+	timeleft = 15;
+	turtleId.style.display ="block"; //makes turtle apear at start of game
+	replayBtn.style.display="none";
+	scoreBox.innerHTML = "Score: 0 Time: 15";
+	clearInterval(MoveturtleItvId);
+	MoveturtleItvId = setInterval(Moveturtle, 1000);
+	clearInterval(gameTimer);
+	gameTimer = setInterval(function()
+	{
+		timeleft --;
+		scoreBox.innerHTML = "Score:" + score + " Time:" + timeleft;
+		if(timeleft<=0)
+		{
+			endGame();
+		}
+	}, 1000);
+	
+	
+	
+}
+
+function endGame()
+{
+	clearInterval(gameTimer);
+	clearInterval(MoveturtleItvId);
+	turtleId.style.display="none";
+	scoreBox.innerHTML = "Game over! Final score: " +score;
+	replayBtn.style.display="block";
+	startBtn.style.display="none"
+}
+
+//link turtle to mouseclick to turtleCatch function
 turtleId.addEventListener("click",turtleCatch);
+startBtn.addEventListener("click",startGame);
+replayBtn.addEventListener("click",startGame);
 
 
-document.addEventListener("keydown",function(evt){
+document.addEventListener("keydown",function(evt)
+{
 console.log(evt);
 if(evt.code=="KeyT"){
 turtleId.classList.add("shrink");
