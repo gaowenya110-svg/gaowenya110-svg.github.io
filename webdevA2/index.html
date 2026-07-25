@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> About turtles </title>
+	<link rel="stylesheet" href =" style.css" >
+	<script src=" main.js " defer></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+	<body>
+	
+		<header>
+			<h1>All about turtles!</h1>
+		</header>
+		
+		<nav> 
+		<button id="hamIcon">Open Menu</button>
+			<ul>
+				<li><button id="page1btn">Types of turtles</button></li>
+				<li><button id="page2btn">Info on turtles</button></li>
+				<li><button id="page3btn">Fun facts about turtles</button></li>
+				<li><button id="page4btn">Game!</button></li>
+			</ul>
+		</nav>
+		
+	<main id="pagecontainer">
+		<section class="page" id="page1">
+			<h2>types of turtles</h2>
+			
+			<h2 id = "line1"> There are many types of turtles, with some common ones being the 'Wood Turtle', 'Common Snapping Turtle' and the 'Pig-nosed Turtle'.</h2>
+			
+				<img src="images/woodturtle.jpg" alt="Wood Turtle" class="img1">
+				<img src="images/snappingturtle.jpeg" alt="Common Snapping Turtle" class="img2">
+				<img src="images/pignoseturtle.jpeg" alt="Pig-nosed Turtle" class="img3">
+				
+			<h2 id = "line2"> Turtles also share many similairites to Tortoises and Terrapins, mostly the big shells resting on their backs. A few examples of common tortoises
+			'Greek Tortoise', the 'Sulcata Tortoise' and the 'Russian Tortoise'.</h2>
+			
+				<img src="images/greektortoise.jpg" alt="Greek Tortoise" class="img4">
+				<img src="images/sulcatatortoise.jpg" alt="Sulcata Tortoise" class="img5">
+				<img src="images/russiantortoise.jpg" alt="Russian Tortoise" class="img6">
+				
+			<h2 id = "line3"> Some examples of popualr terrapins are the 'Red-Eared Slider' and the 'Diamondback Terrapin'.</h2>
+			
+				<img src="images/redearslider.jpg" alt="Red-eared slider" class="img7">
+				<img src="images/diamondback.jpg" alt="Diamondback Terrapin" class="img8">
+			
+		</section>
+		
+		<section class="page" id="page2">
+			<h2>Info on turtles</h2>
+			
+			<h2 id = "line4"> Contrary to popular belief, Turtles are not the same as Tortoises and Terrapins. The most stark difference is in their habitat.</h2>
+			<h2 id = "line5">Turtles live in salty ocean waters, terrapins live in freshwater and tortoises only live on land. </h2>
+			
+				<img src="images/ocean.jpg" alt="Ocean" class="img9">
+				<img src="images/pond.jpg" alt="Pond" class="img10">
+				<img src="images/land.jpg" alt="Land" class="img11">
+				
+			<h2 id = "line6">Living in the Ocean and their large slippers is what makes these turtles such excellent swimmers despite their large sizes. Some turtles can even swim up to 22 miles per hour!</h2>
+			<h2 id = "line7"> Most turtles have a livespan of around 50 to 80 years, with their main source of food being plants, fish and other animal matter.</h2>
+				
+		</section>
+		
+		<section class="page" id="page3">
+			<h2>Fun Facts about turtles</h2>
+			
+			<h2 id = "line8"> Did you know that turtles are rumoured to have existed 200 million years ago when dinosaurs have existed. Making them belong to one of the oldest reptile groups!</h2>
+			<h2 id = "line9"> Another cool thing is that the shells on the back of turtles are not for display! They are actually a part of their skeleton, which includes their spine and rib cage. So next time
+			you see a turtle, try not to sit on their backs!</h2>
+			<h2 id = "line10"> Turtles have another way of breathing underwater. Since they are unable to do so while swallowing their food, some species use their butts to breathe, allowing them to stay underwater 
+			for longer periods of time! </h2>
+			
+			
+		<button id= "quizbtn">Tap here to try a quiz!</button>
+			<section class= "quiz"> 
+				<fieldset>
+					<legend>1. Where does a turtle live?</legend>
+						<input type="radio" name="q1" value="Freshwater"> Freshwater
+						<input type="radio" name="q1" value="Ocean"> Ocean
+						<input type="radio" name="q1" value="Land"> Land
+						<input type="radio" name="q1" value="Space"> Space
+				</fieldset>
+					
+				<fieldset>
+					<legend>2. What is the average lifespan of a turtle?</legend>
+						<input type="radio" name="q2" value="100"> 100+ years
+						<input type="radio" name="q2" value="10to20"> 10 -20 years
+						<input type="radio" name="q2" value="50to80"> 50 to 80 years
+						<input type="radio" name="q2" value="30to90"> 30 to 90 years
+				</fieldset>
+				
+				<fieldset>
+					<legend>3. What are some things a does NOT turtle have?</legend>
+						<input type="radio" name="q3" value="Shell"> A shell
+						<input type="radio" name="q3" value="Flippers"> Flippers
+						<input type="radio" name="q3" value="Money"> Alot of money
+						<input type="radio" name="q3" value="Eyes"> Eyes
+				</fieldset>
+				
+				<fieldset>
+					<legend>4. Are Turtles the same a Tortises and Terrapins?</legend>
+						<input type="radio" name="q4" value="Yes"> Yes Definetely!
+						<input type="radio" name="q4" value="No"> No not at all!
+				</fieldset>
+				
+			<button id="btnSubmit">Submit Quiz</button>
+			
+				<h3 id="scorebox">Not submitted</h3>
+				
+			</section>
+ 		</section>
+		
+		<section class="page" id="page4">
+			<h2>Turtle catcher Game</h2>
+				<p>Tap start, Click Turtle to catch it!</p>
+				<button id="startBtn">Start!</button>
+				<button id="replayBtn">Play Again!</button>
+				<h2 id="scoreBox">.</h2>
+			<div id="box">
+				<img id="turtleId" src="images/turtle.png" alt="turtle image">
+			</div>
+		</section>
+		
+		<footer id = "footer">
+			<h2> Want access on Mobile? Scan this!</h2>
+			<img id="qrCodeImg" src="images/qrcodeimg.png" alt="Qr code image">
+		</footer>
+		
+	</main>
+</body>
