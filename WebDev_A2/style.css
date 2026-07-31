@@ -1,0 +1,167 @@
+.page
+{
+	width: 90vw;
+	height: auto;
+	border: 1px solid black;
+	margin: 10px 20px 15px 10px;
+}
+
+nav ul li { display: inline; }
+
+
+/*the color of the backgrounds*/
+#page1{background:#211761;}
+#page2{background:#314561;}
+#page3{background:#245861;}
+
+/*customiseing buttons*/
+#page1btn,#page2btn,#page3btn,#page4btn
+{
+	list-style-type:none; 
+	cursor: pointer; 
+	border: none;
+	outline: none;
+	background: #211761;
+	color: white;
+	padding: 20px 50px 20px 50px;
+	margin: 10px;
+	
+}
+
+
+#page1btn:hover,#page2btn:hover,#page3btn:hover,#page4btn:hover
+{
+	background: #2e2c94;
+	transform: scale(1.05);
+}
+
+#hamIcon{display:none;}
+
+.quiz{display:none;}
+
+#box
+{
+	width: 90vw;
+	max-width: 1227px;
+	height:60vh; 
+	max-height: 609px;
+	border: none;
+	position: relative;
+	overflow: hidden; /*hides the parts sticking out of the box*/
+}
+
+#scoreBox 
+{
+	padding: 6px 10px;
+	display: inline-block;
+	color: white;
+}
+
+
+
+#replayBtn{display:none;}
+
+#turtleId 
+{
+	position: absolute; /*position of the turtle is relative to box*/
+	width:10vw;
+	transition: all 0.5s;
+	display:none; /*hidden at when button isnt pressed*/
+}
+
+#jellyfishId 
+{
+	position: absolute; /*position of the jellyfish is relative to box*/
+	width:10vw;
+	transition: all 0.5s;
+	display:none; /*hidden at when button isnt pressed*/
+}
+
+#PBId 
+{
+	position: absolute; /*position of the plasticbag is relative to box*/
+	width:10vw;
+	transition: all 0.5s;
+	display:none; /*hidden at when button isnt pressed*/
+}
+
+#turtleId.shrink{width:5vw;opacity: 0;}
+
+#jellyfishId.shrink{width:5vw;opacity: 0;}
+
+#PBId.shrink{width:5vw;opacity: 0;}
+@keyframes turtleFrames
+{
+	
+	25%{rotate:90deg}
+	50%{rotate:180deg}
+	100%{rotate:270deg}
+}
+#turtleId.anim1{animation: turtleFrames 1s;}
+
+@keyframes jellyfishFrames
+{
+	
+	25%{rotate:90deg}
+	50%{rotate:180deg}
+	100%{rotate:270deg}
+}
+#jellyfishId.anim1{animation: jellyfishFrames 1s;}
+
+@keyframes PBFrames
+{
+	
+	25%{rotate:90deg}
+	50%{rotate:180deg}
+	100%{rotate:270deg}
+}
+#PBId.anim1{animation: PBFrames 1s;}
+
+
+.menuShow{display:block;}
+
+@media (max-width:800px) /*Mobile mode*/
+{
+
+	#footer{display:none;}
+	h1{background: lightgreen;}
+	h1::after{content:"(mobile)";}
+
+	nav ul li{display:block;}
+
+	#hamIcon{display:block;}
+
+	nav ul{display:none;}
+	
+	#box 
+	{
+		width:92vw; /*so that its easier to use on mobile*/
+		height: 50vh;
+	}
+	
+	#turtleId
+	{
+		width: 20vw; /*so that turtle is bigger and easier to press*/
+	}
+	
+	#jellyfishId
+	{
+		width: 20vw; /*so that jellyfish is bigger and easier to press*/
+	}
+	#PBId
+	{
+		width: 20vw; /*so that plastic bag is bigger and easier to press*/
+	}
+	
+	#startBtn, #replayBtn
+	{
+		padding: 10px 20px;
+	}
+}
+
+
+body{
+  background-image: url("images/turtlecage.jpg");
+  background-size: cover;
+  color:white;
+}
