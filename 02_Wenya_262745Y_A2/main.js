@@ -103,18 +103,23 @@ scorebox.innerHTML="Score:"+score;
 //game
 
 const turtleId = document.getElementById("turtleId");
+const jellyfishId = document.getElementById("jellyfishId");
+const PBId = document.getElementById("PBId");
 const box = document.getElementById("box");
 const scoreBox=document.getElementById("scoreBox");
 const startBtn=document.getElementById("startBtn");
 const replayBtn=document.getElementById("replayBtn");
 
 const popAudio = new Audio("bubblesound.mp3");
+const bagAudio = new Audio("plasticsound.mp3");
 
 //the frequency the turtle moves in ms
 var timeleft = 15;
 var score=0; //to track how many clicks
 let gameTimer;
 let MoveturtleItvId;
+let MovejellyfishItvId;
+let MovePBItvId;
 
 
 function GetRandom(min,max)
@@ -131,14 +136,50 @@ function Moveturtle()
 	turtleId.style.top = GetRandom(0, maxY) + "px";
 }
 
+function Movejellyfish()
+ {	
+	const maxY = box.offsetHeight - jellyfishId.offsetHeight;
+	const maxX = box.offsetWidth - jellyfishId.offsetWidth;
+	jellyfishId.style.left = GetRandom(0, maxX) + "px";
+	jellyfishId.style.top = GetRandom(0, maxY) + "px";
+}
+
+function MovePB()
+ {	
+	const maxY = box.offsetHeight - PBId.offsetHeight;
+	const maxX = box.offsetWidth - PBId.offsetWidth;
+	PBId.style.left = GetRandom(0, maxX) + "px";
+	PBId.style.top = GetRandom(0, maxY) + "px";
+}
+
 
 function turtleCatch() 
 {
 	//increases score after clicking
 	score++;
 	//update html scorebox
-	scoreBox.innerHTML = "Score: " + score, " Time:" + timeleft;
+	scoreBox.innerHTML = "Score: " + score + " Time:" + timeleft;
 	popAudio.play(); //play the audio
+
+}
+
+function jellyfishCatch() 
+{
+	//decreases score after clicking
+	score--;
+	//update html scorebox
+	scoreBox.innerHTML = "Score: " + score + " Time:" + timeleft;
+	popAudio.play(); //play the audio
+
+}
+
+function PBCatch() 
+{
+	//decreases score after clicking
+	score--;
+	//update html scorebox
+	scoreBox.innerHTML = "Score: " + score + " Time:" + timeleft;
+	bagAudio.play(); //play the audio
 
 }
 
@@ -147,10 +188,16 @@ function startGame()
 	score = 0;
 	timeleft = 15;
 	turtleId.style.display ="block"; //makes turtle apear at start of game
+	jellyfishId.style.display ="block"; //makes jellyfish apear at start of game
+	PBId.style.display ="block"; //makes plasticbag apear at start of game
 	replayBtn.style.display="none";
 	scoreBox.innerHTML = "Score: 0 Time: 15";
 	clearInterval(MoveturtleItvId);
+	clearInterval(MovejellyfishItvId);
+	clearInterval(MovePBItvId);
 	MoveturtleItvId = setInterval(Moveturtle, 1000);
+	MovejellyfishItvId = setInterval(Movejellyfish, 1000);
+	MovePBItvId = setInterval(MovePB, 1000);
 	clearInterval(gameTimer);
 	gameTimer = setInterval(function()
 	{
@@ -170,28 +217,20 @@ function endGame()
 {
 	clearInterval(gameTimer);
 	clearInterval(MoveturtleItvId);
+	clearInterval(MovejellyfishItvId);
+	clearInterval(MovePBItvId);
 	turtleId.style.display="none";
+	jellyfishId.style.display="none";
+	PBId.style.display="none";
 	scoreBox.innerHTML = "Game over! Final score: " +score;
 	replayBtn.style.display="block";
-	startBtn.style.display="none"
+	startBtn.style.display="none";
 }
+
 
 //link turtle to mouseclick to turtleCatch function
 turtleId.addEventListener("click",turtleCatch);
+jellyfishId.addEventListener("click",jellyfishCatch);
+PBId.addEventListener("click",PBCatch);
 startBtn.addEventListener("click",startGame);
 replayBtn.addEventListener("click",startGame);
-
-
-document.addEventListener("keydown",function(evt)
-{
-console.log(evt);
-if(evt.code=="KeyT"){
-turtleId.classList.add("shrink");
-}
-if(evt.code=="KeyU"){
-turtleId.classList.remove("shrink");
-}
-
-
-});
-
